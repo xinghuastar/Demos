@@ -1,0 +1,167 @@
+		.container {
+			font-family: Arial, sans-serif;
+			position: relative;
+			top: 10px;
+			left: 10px;
+			border: 4px solid black;
+			width: 100%;
+			max-width: 1200px;
+			height: 100%;
+			max-height: 700px;
+		}
+		#headerColumn {
+			position: relative;
+			float: left;
+			width: 100%;
+			height:10%;
+			min-width: 210px;
+			border-bottom: 2px solid black;
+			background-color: #606060;
+			
+		}
+		#leftColumn {
+			position: relative;
+			float: left;
+			width: 75%;
+			height:90%;
+			min-width: 140px;
+			border-right: 2px solid black;
+		}
+		#rightColumn {
+			position: relative;
+			width: 24%;
+			height:90%;
+			min-width: 70px;
+			float: right;
+		}
+
+		.header-label {
+			position: relative;
+			font-size: 30px;
+			font-weight: bold;
+			top: 15px;
+			left: 20px;
+		}
+		
+		.area {
+			border-style: solid;
+			border-width: 0px;
+		}
+		
+		.listItem {
+			height: 10%;
+			width: 90%;
+			min-width: 100px;
+			float: left;
+			border-radius: 15px;
+		    padding: 20px;
+		    border: 2px solid black;
+		    margin: 10px 2px 10px 20px;
+
+		}
+
+		.idleCss {
+			background: #CCE8B5;
+		}
+
+		.buildingCss {
+			background: #FFFBB9;
+		}
+
+		.resName {
+			font-weight: bold;
+			font-size: 20px;
+		}
+		.resUrl {
+			margin-left: 20px;
+		}
+		.resType {
+			display: inline-block;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.inlineItem {
+			display: inline;
+		}
+
+		.addTypeLink {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
+		.resTypeItem {
+			margin-left: 25px;
+			margin-right: 5px;
+		}
+		.xbutton {
+			color: #777;
+			background-color: white;
+			font: 14px/100% arial, sans-serif;
+			border: 1px solid black;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 20px;
+			cursor: pointer;
+			padding: 0px 3px;
+		}
+		.circle {
+			position: relative;
+			float: left;
+			width: 55px;
+			height: 55px;
+			border-radius: 50%;
+			background: #929292;
+			margin-right: 10px;
+		}
+		.addTypeBlock {
+			float: left;
+			display: none;
+			position: relative;
+			border: 2px solid black;
+			background-color: white;
+			height: 85px;
+			width: 600px;
+			padding: 10px 0px;
+			z-index: 100;
+			background-color: #E0EDD4;
+			border-radius: 15px;
+		}
+		.addTypeBlock span,
+		.addTypeBlock .blockInput {
+			margin: 10px 0 10px 10px;
+		}
+
+		.blockInput {
+			width: 90%;
+		}
+
+		.radius-button {
+			padding: 4px 15px;
+			border-radius: 15px;
+			border: 1px solid black;
+			background-color: white;
+			font-size: 16px;
+			margin: 0 15px;
+
+		}
+
+		#numBuilding,
+		#numIdle {
+			margin-left: 60px;
+		}
+
+		.hisItem {
+			position: relative;
+			float: left;
+			margin-bottom: 20px;
+		}
+
+		.denyLink {
+			float: right;
+			text-decoration: underline;
+			cursor: pointer;
+			margin-right: 20px;
+			font-size: 20px;
+		}
