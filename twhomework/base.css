@@ -1,0 +1,69 @@
+html,
+body,
+header,
+footer,
+div,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1024) and (max-width: 1200px) {}
+
+@media all and (min-width: 1200px) {
+    .flex.lg1 {
+        flex-basis: 8.333333333333332%;
+    }
+    .flex.lg2 {
+        flex-basis: 16.666666666666664%;
+    }
+    .flex.lg3 {
+        flex-basis: 25%;
+    }
+    .flex.lg4 {
+        flex-basis: 33.33333333333333%;
+    }
+    .flex.lg5 {
+        flex-basis: 41.66666666666667%;
+    }
+    .flex.lg6 {
+        -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    }
+    .flex.lg7 {
+        -ms-flex-preferred-size: 58.333333333333336%;
+        flex-basis: 58.333333333333336%;
+    }
+    .flex.lg8 {
+        -ms-flex-preferred-size: 66.66666666666666%;
+        flex-basis: 66.66666666666666%;
+    }
+    .flex.lg9 {
+        -ms-flex-preferred-size: 75%;
+        flex-basis: 75%;
+    }
+    .flex.lg10 {
+        -ms-flex-preferred-size: 83.33333333333334%;
+        flex-basis: 83.33333333333334%;
+    }
+    .flex.lg11 {
+        -ms-flex-preferred-size: 91.66666666666666%;
+        flex-basis: 91.66666666666666%;
+    }
+    .flex.lg12 {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+}
+
+header {
+    background-color: red;
+}
