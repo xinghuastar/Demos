@@ -1,0 +1,257 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+	-webkit-box-sizing: border-box;
+     box-sizing: border-box;
+}
+html,body{
+	height: 100%;
+}
+*,
+::before,
+::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+a{
+	text-decoration: none;
+	color: #f3f3f3;
+}
+ul{
+	list-style: none;
+}
+@font-face {
+  font-family: 'cruise';
+  src:
+    url('fonts/cruise.ttf?srz1pg') format('truetype'),
+    url('fonts/cruise.woff?srz1pg') format('woff'),
+    url('fonts/cruise.svg?srz1pg#cruise') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cruise' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-desktop:before {
+  content: "\e30c";
+}
+.icon-boat:before {
+  content: "\e532";
+}
+.icon-deny:before {
+  content: "\e611";
+}
+.icon-folder:before {
+  content: "\e2c8";
+}
+.icon-info:before {
+  content: "\e88f";
+}
+.icon-plus:before {
+  content: "\f067";
+}
+.icon-search:before {
+  content: "\f002";
+}
+.icon-th-card:before {
+  content: "\f00a";
+}
+.icon-th-list:before {
+  content: "\f00b";
+}
+.icon-close:before {
+  content: "\f00d";
+}
+.icon-cog:before {
+  content: "\f013";
+}
+.icon-trash:before {
+  content: "\f014";
+}
+.icon-sign-in:before {
+  content: "\f090";
+}
+.icon-navicon:before {
+  content: "\f0c9";
+}
+.icon-dashboard:before {
+  content: "\f0e4";
+}
+.icon-sitemap:before {
+  content: "\f0e8";
+}
+.icon-coffee:before {
+  content: "\f0f4";
+}
+.icon-angle-up:before {
+  content: "\f106";
+}
+.icon-angle-down:before {
+  content: "\f107";
+}
+.icon-life-bouy:before {
+  content: "\f1cd";
+}
+.icon-id-card:before {
+  content: "\f2c3";
+}
+
+@media screen and (min-width: 1200px) {
+    .main {
+        width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+}
+
+@media screen and (min-width: 1024) and (max-width: 1200px) {}
+
+@media all and (min-width: 1200px) {
+    .flex.lg1 {
+        flex-basis: 8.333333333333332%;
+    }
+    .flex.lg2 {
+        flex-basis: 16.666666666666664%;
+    }
+    .flex.lg3 {
+        flex-basis: 25%;
+    }
+    .flex.lg4 {
+        flex-basis: 33.33333333333333%;
+    }
+    .flex.lg5 {
+        flex-basis: 41.66666666666667%;
+    }
+    .flex.lg6 {
+        -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    }
+    .flex.lg7 {
+        -ms-flex-preferred-size: 58.333333333333336%;
+        flex-basis: 58.333333333333336%;
+    }
+    .flex.lg8 {
+        -ms-flex-preferred-size: 66.66666666666666%;
+        flex-basis: 66.66666666666666%;
+    }
+    .flex.lg9 {
+        -ms-flex-preferred-size: 75%;
+        flex-basis: 75%;
+    }
+    .flex.lg10 {
+        -ms-flex-preferred-size: 83.33333333333334%;
+        flex-basis: 83.33333333333334%;
+    }
+    .flex.lg11 {
+        -ms-flex-preferred-size: 91.66666666666666%;
+        flex-basis: 91.66666666666666%;
+    }
+    .flex.lg12 {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+}
+.container{
+	height: 100%;
+	background-color: #f3f3f3;
+}
+.main{
+	position: relative;
+	height: calc(100% - 50px);
+}
+header{
+    height: 50px;
+    padding: 5px 0px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 3px 3px #e1e4e6;
+}
+header .logo{
+	display: inline-block;
+}
+.sideBar{
+	float: left;
+	width: 25%;
+	height: 100%;
+	background-color: #2d4054;
+}
+.list .item{
+	padding-left: 30px;
+	color: #f3f3f3;
+	line-height: 45px;
+	text-align: left;
+}
+.list .item:hover{
+	background-color: #435466;
+}
+.list .item a{
+	padding-left: 10px;
+}
+
+.content{
+	float: left;
+	width: 100%;
+	margin-left: -25%; 
+	padding-left: 25%;
+}
+.agent-area {
+	margin: 10px;
+}
+.agent-area .header{
+	display: flex;
+	justify-content: space-between;
+}
+
+.agent-area .header .area-wrap{
+	flex-basis: 33.33333333333333%;
+}
+.building-area{
+	background-color: #ff9a2a;
+	height: 100%;
+	margin-right: 10px;
+}
+.idle-area{
+    background-color: #7fbc39;
+    height: 100%;
+    margin-right: 10px;
+}
+.badge-area{
+	height: 100%;
+	background-color: #fff;
+}
+.agent-area .header .type{
+	font: 18px bold;
+}
+.agent-area .header [class^="icon-"]{
+	font-size: 144px;
+	color: rgba(255,255,255, 0.2)
+}
+.agent-area .header .count{
+	font: 48px;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    height: 30px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 -3px 3px #e1e4e6;
+}
+
