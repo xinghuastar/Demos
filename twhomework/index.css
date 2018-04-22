@@ -15,19 +15,25 @@ html,body{
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
+.container{
+  color: #2d4054;
+}
 a{
 	text-decoration: none;
-	color: #f3f3f3;
+  color: #2d4054;
 }
-ul{
+a:hover{
+  color: #00b4cf;
+}
+ul:not(.history-list){
 	list-style: none;
 }
 @font-face {
   font-family: 'cruise';
   src:
-    url('fonts/cruise.ttf?srz1pg') format('truetype'),
-    url('fonts/cruise.woff?srz1pg') format('woff'),
-    url('fonts/cruise.svg?srz1pg#cruise') format('svg');
+    url('ASSETS/font icons/fonts/cruise.ttf?srz1pg') format('truetype'),
+    url('ASSETS/font icons/fonts/cruise.woff?srz1pg') format('woff'),
+    url('ASSETS/font icons/fonts/cruise.svg?srz1pg#cruise') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -185,64 +191,162 @@ header .logo{
 	display: inline-block;
 }
 .sideBar{
+  position: relative;
 	float: left;
-	width: 25%;
+	width: 22%;
 	height: 100%;
 	background-color: #2d4054;
 }
-.list .item{
+.sideBar .nav .item{
 	padding-left: 30px;
 	color: #f3f3f3;
 	line-height: 45px;
 	text-align: left;
 }
-.list .item:hover{
-	background-color: #435466;
+.sideBar .nav .item a
+{
+  color: #f3f3f3;
 }
-.list .item a{
+.sideBar .nav .item:hover{
+	background-color: #435466;
+  color: #00b4cf;
+}
+.sideBar .nav .item a{
 	padding-left: 10px;
 }
-
+.history-area{
+  position: absolute;
+  bottom: 45px;
+  min-height: 40%;
+  left: 0;
+  right: 0;
+}
+.history-area .head{
+  font-size: 24px;
+  color: #ccc;
+  padding-left: 15px;
+}
+.history-area .list{
+  font-size: 12px;
+  color: #999;
+  margin-left: 30px;
+}
+.history-area .list .item{
+  display: list-item;
+}
+.history-area .list .item:hover{
+  color: #0084cf;
+}
 .content{
 	float: left;
-	width: 100%;
-	margin-left: -25%; 
-	padding-left: 25%;
-}
-.agent-area {
-	margin: 10px;
-}
-.agent-area .header{
-	display: flex;
-	justify-content: space-between;
+	width: 78%;
+  margin-top: 10px;
 }
 
-.agent-area .header .area-wrap{
+.content .header{
+	display: flex;
+  color: #fff;
+}
+
+.content .header .area-wrap{
 	flex-basis: 33.33333333333333%;
 }
 .building-area{
+  position: relative;
 	background-color: #ff9a2a;
 	height: 100%;
-	margin-right: 10px;
+	margin-left: 20px;
+  text-align: center;
 }
 .idle-area{
+    position: relative;
     background-color: #7fbc39;
     height: 100%;
-    margin-right: 10px;
+    margin-left:20px;
+    text-align: center;
 }
 .badge-area{
 	height: 100%;
 	background-color: #fff;
+  margin-left: 20px;
+  text-align: center;
 }
-.agent-area .header .type{
+.content .header .type{
+  position: absolute;
+  top:10px;
+  left: 10px;
 	font: 18px bold;
 }
-.agent-area .header [class^="icon-"]{
+.content .header [class^="icon-"]{
 	font-size: 144px;
 	color: rgba(255,255,255, 0.2)
 }
-.agent-area .header .count{
-	font: 48px;
+.content .header .count{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+	font-size: 48px;
+}
+.agent-area {
+  margin-left: 20px;
+  margin-top: 10px;
+
+}
+.agent-area .navbar{
+  display: flex;
+  height: 50px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+.agent-area .navbar .nav{
+  flex-basis: 33.33333333333333%;
+  display: flex;
+}
+.agent-area .navbar .nav .item{
+
+flex: 0 0 33.33333333333333%;
+text-align: center;
+line-height: 50px;
+border-right: 1px solid #f3f3f3;
+}
+.agent-area .navbar .nav .item{
+  border-bottom: 3px;
+}
+.agent-area .navbar .nav .item a{
+  display: block;
+}
+.agent-area .navbar .nav .item a:hover{
+  border-bottom: 3px  solid #00b4cf;
+}
+.agent-area .navbar .search-area{
+   flex: 1 0 auto;
+   margin-left: 20px;
+   line-height: 50px;
+}
+.agent-area .navbar .search-area span{
+  position: relative;
+  left: 30px;
+  top: 3px;
+  color: #e1e4e6;
+} 
+.agent-area .navbar .search-area input{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+}
+.agent-area .navbar .menus{
+  flex: 0 0 auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  line-height: 50px;
+}
+.agent-area .navbar .menus .menu:first-child{
+  margin-right: 18px;
+}
+.agent-area .list-area .item{
+  display: flex;
+  margin-top: 10px;
+  background-color: #fff;
 }
 footer{
 	position: fixed;
