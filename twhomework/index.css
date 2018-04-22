@@ -347,6 +347,22 @@ border-right: 1px solid #f3f3f3;
   display: flex;
   margin-top: 10px;
   background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.agent-area .list-area .item .logo{
+  flex: 0 0 100px;
+  height: 100px;
+  background: url('ASSETS/os icons/windows.png') center no-repeat;
+}
+.agent-area .list-area .item .detail{
+  flex: 1 1 auto;
+}
+.agent-area .list-area .item .infolist{
+  display: flex;
+}
+.agent-area .list-area .item .platformlist{
+  display: flex;
 }
 footer{
 	position: fixed;
