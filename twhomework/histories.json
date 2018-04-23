@@ -1,0 +1,48 @@
+[{
+	"logo":"ASSETS/os icons/windows.png",
+	"domain":"bjstdmngbgr01.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/windows.png",
+	"domain":"bjstdmngbgr02.thoughtworks.com",
+	"status":"building",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/ubuntu.png",
+	"domain":"bjstdmngbgr03.thoughtworks.com",
+	"status":"building",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/debin.png",
+	"domain":"bjstdmngbgr04.thoughtworks.com",
+	"status":"building",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/suse.png",
+	"domain":"bjstdmngbgr05.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/cent_os.png",
+	"domain":"bjstdmngbgr06.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	}]
