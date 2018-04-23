@@ -3,11 +3,13 @@
     padding: 0;
 }
 html{
-	-webkit-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
      box-sizing: border-box;
+     font-family: Avenir, Helvetica, Arial, sans-serif;
+     font-size: 14px;
 }
 html,body{
-	height: 100%;
+    height: 100%;
 }
 *,
 ::before,
@@ -19,14 +21,14 @@ html,body{
   color: #2d4054;
 }
 a{
-	text-decoration: none;
+    text-decoration: none;
   color: #2d4054;
 }
 a:hover{
   color: #00b4cf;
 }
 ul:not(.history-list){
-	list-style: none;
+    list-style: none;
 }
 @font-face {
   font-family: 'cruise';
@@ -173,12 +175,12 @@ ul:not(.history-list){
     }
 }
 .container{
-	height: 100%;
-	background-color: #f3f3f3;
+    height: 100%;
+    background-color: #f3f3f3;
 }
 .main{
-	position: relative;
-	height: calc(100% - 50px);
+    position: relative;
+    height: calc(100% - 50px);
 }
 header{
     height: 50px;
@@ -188,31 +190,31 @@ header{
     box-shadow: 0 3px 3px #e1e4e6;
 }
 header .logo{
-	display: inline-block;
+    display: inline-block;
 }
 .sideBar{
   position: relative;
-	float: left;
-	width: 22%;
-	height: 100%;
-	background-color: #2d4054;
+    float: left;
+    width: 22%;
+    height: 100%;
+    background-color: #2d4054;
 }
 .sideBar .nav .item{
-	padding-left: 30px;
-	color: #f3f3f3;
-	line-height: 45px;
-	text-align: left;
+    padding-left: 30px;
+    color: #f3f3f3;
+    line-height: 45px;
+    text-align: left;
 }
 .sideBar .nav .item a
 {
   color: #f3f3f3;
 }
 .sideBar .nav .item:hover{
-	background-color: #435466;
+    background-color: #435466;
   color: #00b4cf;
 }
 .sideBar .nav .item a{
-	padding-left: 10px;
+    padding-left: 10px;
 }
 .history-area{
   position: absolute;
@@ -238,54 +240,74 @@ header .logo{
   color: #0084cf;
 }
 .content{
-	float: left;
-	width: 78%;
+    float: left;
+    width: 78%;
   margin-top: 10px;
 }
 
 .content .header{
-	display: flex;
-  color: #fff;
+    display: flex;
+  
 }
 
 .content .header .area-wrap{
-	flex-basis: 33.33333333333333%;
+    flex-basis: 33.33333333333333%;
 }
 .building-area{
   position: relative;
-	background-color: #ff9a2a;
-	height: 100%;
-	margin-left: 20px;
+    background-color: #ff9a2a;
+    color: #fff;
+    height: 100%;
+    margin-left: 20px;
   text-align: center;
 }
 .idle-area{
     position: relative;
     background-color: #7fbc39;
+    color: #fff;
     height: 100%;
     margin-left:20px;
     text-align: center;
 }
 .badge-area{
-	height: 100%;
-	background-color: #fff;
-  margin-left: 20px;
-  text-align: center;
+    height: 100%;
+    background-color: #fff;
+    margin-left: 20px;
+    
+}
+.badge-area .badgeList{
+    display: flex;
+    height: 100%;
+}
+.badge-area .badgeItem{
+    flex: 0 0 33.33333333333333%;
+    text-align: center;
+}
+.badge-area  .badgeName{
+    font-size: 12px;
+    height: 50%;
+    padding-top: 30px;
+}
+.badge-area .badgeCount{
+    font-size: 20px;
+    height: 50%;
+    padding-top: 30px;
 }
 .content .header .type{
   position: absolute;
   top:10px;
   left: 10px;
-	font: 18px bold;
+  font: 18px bold;
 }
 .content .header [class^="icon-"]{
-	font-size: 144px;
-	color: rgba(255,255,255, 0.2)
+    font-size: 144px;
+    color: rgba(255,255,255, 0.2)
 }
 .content .header .count{
   position: absolute;
   bottom: 10px;
   right: 10px;
-	font-size: 48px;
+  font-size: 48px;
 }
 .agent-area {
   margin-left: 20px;
@@ -347,31 +369,88 @@ border-right: 1px solid #f3f3f3;
   display: flex;
   margin-top: 10px;
   background-color: #fff;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-left: 10px;
 }
 .agent-area .list-area .item .logo{
-  flex: 0 0 100px;
-  height: 100px;
+  flex: 0 0 80px;
+  height: 80px;
   background: url('ASSETS/os icons/windows.png') center no-repeat;
 }
 .agent-area .list-area .item .detail{
   flex: 1 1 auto;
+  padding: 10px;
+  position: relative;
 }
 .agent-area .list-area .item .infolist{
   display: flex;
 }
+.agent-area .list-area .item .infolist li:nth-child(1){
+  flex: 0 0 33.33333333333333%;
+}
+.agent-area .list-area .item .infolist li:nth-child(2){
+  flex: 0 0 90px;
+}
+.agent-area .list-area .item .infolist li:nth-child(2) span{
+    padding: 3px 5px;
+    background-color: #ff9a2a;
+    color: #fff;
+  
+}
+.agent-area .list-area .item .infolist li:not(:nth-child(2)) span:first-child{
+    margin-right: 5px;
+    font-size: 16px;
+    vertical-align: -2px;
+}
+.agent-area .list-area .item .infolist li:nth-child(3){
+  flex: 0 0 130px;
+}
 .agent-area .list-area .item .platformlist{
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-right: 70px;
+}
+.agent-area .list-area .item .platformlist li.add {
+    background-color: #00b4cf;
+    margin-right: 5px;
+    padding:2px 5px;
+}
+.agent-area .list-area .item .platformlist li.add span{
+    font-size: 18px;
+    color: #fff;
+    vertical-align: -5px;   
+}
+.agent-area .list-area .item .platformlist li:not(:first-child){
+    margin-right: 5px;
+    padding:3px 5px;
+    background-color: #efefef;
+}
+.agent-area .list-area .item .platformlist li:not(:first-child) span:nth-child(2){
+    margin-left: 5px;
+    font-size: 16px;
+}
+.agent-area .list-area .item .deny{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    padding:5px 10px;
+    background-color: #00b4cf;
+    color: #fff;
 }
 footer{
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 30px;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 -3px 3px #e1e4e6;
 }
 
+.model.hidden{
+    display: none;
+}
+.model {
+    position: absolute;
+}
