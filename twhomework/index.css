@@ -9,7 +9,7 @@ html{
      font-size: 14px;
 }
 html,body{
-    height: 100%;
+   /* height: 100%;*/
 }
 *,
 ::before,
@@ -124,7 +124,6 @@ ul:not(.history-list){
     .main {
         width: 1200px;
         margin: 0 auto;
-        position: relative;
     }
 }
 
@@ -176,12 +175,12 @@ ul:not(.history-list){
     }
 }
 .container{
-    height: 100%;
     background-color: #f3f3f3;
+    min-height: 100vh;
 }
 .main{
-    position: relative;
-    height: calc(100% - 50px);
+  padding-bottom: 50px;
+  position: relative;
 }
 header{
     height: 50px;
@@ -194,10 +193,11 @@ header .logo{
     display: inline-block;
 }
 .sideBar{
-  position: relative;
-    float: left;
+    position: absolute;
     width: 22%;
-    height: 100%;
+    top:-10px;
+    left:0;
+    bottom:0;
     background-color: #2d4054;
 }
 .sideBar .nav {
@@ -213,7 +213,7 @@ header .logo{
 {
   color: #f3f3f3;
 }
-.sideBar .nav .item:hover{
+.sideBar .nav .item:hover, .sideBar .nav .item.active{
     background-color: #435466;
   color: #00b4cf;
 }
@@ -246,25 +246,26 @@ header .logo{
   color: #0084cf;
 }
 .content{
-    float: left;
+    margin-left: 22%;
     width: 78%;
   margin-top: 10px;
 }
 
 .content .header{
     display: flex;
-  
+    align-items:stretch;
 }
 
 .content .header .area-wrap{
     flex-basis: 33.33333333333333%;
+    margin-left: 20px;
+    background-color: #fff;
 }
 .building-area{
   position: relative;
     background-color: #ff9a2a;
     color: #fff;
     height: 100%;
-    margin-left: 20px;
   text-align: center;
 }
 .idle-area{
@@ -272,13 +273,11 @@ header .logo{
     background-color: #7fbc39;
     color: #fff;
     height: 100%;
-    margin-left:20px;
     text-align: center;
 }
 .badge-area{
     height: 100%;
     background-color: #fff;
-    margin-left: 20px;
     
 }
 .badge-area .badgeList{
@@ -315,134 +314,136 @@ header .logo{
   right: 10px;
   font-size: 48px;
 }
-.agent-area {
+.navbarWrapper {
   margin-top: 10px;
 
 }
-.agent-area .navbar{
+.navbarWrapper .navbar{
   display: flex;
   height: 50px;
   margin-top: 10px;
   margin-left: 20px;
   background-color: #fff;
 }
-.agent-area .navbar .nav{
+.navbarWrapper .navbar .nav{
  flex: 0 0 calc(33.33333333333333% - 13px);
   /*flex: 0 0 33.33333333333333%;*/
   display: flex;
 }
-.agent-area .navbar .nav .item{
+.navbarWrapper .navbar .nav .item{
 flex: 0 0 33.33333333333333%;
 text-align: center;
 line-height: 50px;
 border-right: 1px solid #f3f3f3;
 }
-.agent-area .navbar .nav .item{
+/*.navbarWrapper .navbar .nav .item{
   border-bottom: 3px;
 }
-.agent-area .navbar .nav .item a{
+*/
+.navbarWrapper .navbar .nav .item a{
   display: block;
 }
-.agent-area .navbar .nav .item a:hover{
+.navbarWrapper .navbar .nav .item a:hover,.navbarWrapper .navbar .nav .item a.active{
+  color: #00b4cf;
   border-bottom: 3px  solid #00b4cf;
 }
-.agent-area .navbar .search-area{
+.navbarWrapper .navbar .search-area{
    flex: 1 0 auto;
    margin-left: 20px;
    line-height: 50px;
 }
-.agent-area .navbar .search-area span{
+.navbarWrapper .navbar .search-area span{
   position: relative;
   left: 30px;
   top: 3px;
   color: #e1e4e6;
 } 
-.agent-area .navbar .search-area input{
+.navbarWrapper .navbar .search-area input{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 30px;
 }
-.agent-area .navbar .menus{
+.navbarWrapper .navbar .menus{
   flex: 0 0 auto;
   margin-left: 20px;
   margin-right: 20px;
   line-height: 50px;
 }
-.agent-area .navbar .menus .menu:not(:first-child){
+.navbarWrapper .navbar .menus .menu:not(:first-child){
   margin-left: 18px;
 }
 .icon-th-list{
     color: #00b4cf;
 }
-.agent-area .list-area{
+.listWrapper .list{
     margin-left: 20px;
 }
-.agent-area .list-area .item{
+.listWrapper .list .item{
   position: relative;
   display: flex;
   margin-top: 10px;
   background-color: #fff;
   padding-left: 10px;
 }
-.agent-area .list-area .item .logo{
+.listWrapper .list .item .logo{
   flex: 0 0 80px;
   height: 80px;
   background: url('ASSETS/os icons/windows.png') center no-repeat;
 }
-.agent-area .list-area .item .detail{
+.listWrapper .list  .item .detail{
   flex: 1 1 auto;
   padding: 10px;
   position: relative;
 }
-.agent-area .list-area .item .infolist{
+.listWrapper .list  .item .infolist{
   display: flex;
 }
-.agent-area .list-area .item .infolist li:nth-child(1){
+.listWrapper .list  .item .infolist li:nth-child(1){
   flex: 0 0 33.33333333333333%;
 }
-.agent-area .list-area .item .infolist li:nth-child(2){
+.listWrapper .list .item .infolist li:nth-child(2){
   flex: 0 0 90px;
 }
-.agent-area .list-area .item .infolist li:nth-child(2) span{
+.listWrapper .list  .item .infolist li:nth-child(2) span{
     padding: 3px 5px;
     background-color: #ff9a2a;
     color: #fff;
   
 }
-.agent-area .list-area .item .infolist li:not(:nth-child(2)) span:first-child{
+.listWrapper .list  .item .infolist li:not(:nth-child(2)) span:first-child{
     margin-right: 5px;
     font-size: 16px;
     vertical-align: -2px;
 }
-.agent-area .list-area .item .infolist li:nth-child(3){
+.listWrapper .list  .item .infolist li:nth-child(3){
   flex: 0 0 130px;
 }
-.agent-area .list-area .item .platformlist{
+.listWrapper .list .item .platformlist{
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   padding-right: 70px;
 }
-.agent-area .list-area .item .platformlist li.add {
+.listWrapper .list  .item .platformlist li.add {
     background-color: #00b4cf;
     margin-right: 5px;
     padding:2px 5px;
 }
-.agent-area .list-area .item .platformlist li.add span{
+.listWrapper .list  .item .platformlist li.add span{
     font-size: 18px;
     color: #fff;
     vertical-align: -5px;   
 }
-.agent-area .list-area .item .platformlist li:not(:first-child){
+.listWrapper .list  .item .platformlist li:not(:first-child){
     margin-right: 5px;
     padding:3px 5px;
     background-color: #efefef;
 }
-.agent-area .list-area .item .platformlist li:not(:first-child) span:nth-child(2){
+.listWrapper .list  .item .platformlist li:not(:first-child) span:nth-child(2){
     margin-left: 5px;
     font-size: 16px;
 }
-.agent-area .list-area .item .deny{
+.listWrapper .list  .item .deny{
     position: absolute;
     right: 15px;
     bottom: 10px;
