@@ -4,12 +4,14 @@
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="index.css">
+
 </head>
 
 <body>
     <div class="container">
         <header class="header">
-            <span></span>
+        <div class="header-content">
+            <span class="icon-navicon">xxx</span>
             <div class="logo">
                 <svg width="315px" height="40px" viewBox="0 0 315 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
@@ -27,17 +29,26 @@
                     </g>
                 </svg>
             </div>
-            <span></span>
+            <div class="menu">
+                <span class="bg"></span>
+                <span class="icon-menu icon-angle-down"></span>
+                <div class="sub-menu ">
+                <ul class="menus">
+                    <li class="menu-item"><span class="icon-id-card"></span><a class="menu-name profile" href="">Profile</a></li>
+                     <li class="menu-item"><span class="icon-sign-in"></span><a class="menu-name signOut" href="#">Sign Out</a></li>
+                </ul>
+            </div>
+            </div>
+        <div>
         </header>
        
             <div class="main">
                 <div class="sideBar">
                     <ul class="nav">
-                        <li class="item">
-                            <span class="icon-dashboard"></span><a href="#">DASHBOARD</a></li>
-                        <li class="item"><span class="icon-sitemap"></span><a href="#">AGENT</a></li>
-                        <li class="item"><span class="icon-boat"></span><a href="#">MYCRUSE</a></li>
-                        <li class="item"><span class="icon-life-bouy"></span><a href="#">HELP</a></li>
+                        <li class="item" id="dashboard"><span class="icon-dashboard"></span><a href="#">DASHBOARD</a></li>
+                        <li class="item active" id="agent"><span class="icon-sitemap"></span><a href="#">AGENT</a></li>
+                        <li class="item" id="mycruse"><span class="icon-boat"></span><a href="#">MYCRUSE</a></li>
+                        <li class="item" id="help"><span class="icon-life-bouy"></span><a href="#">HELP</a></li>
                     </ul>
                     <div class="history-area">
                         <h1 class="head">History</h1>
@@ -47,100 +58,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="header">
-                        <div class="area-wrap">
-                            <div class="building-area">
-                                <span class="type">Building</span>
-                                <span class="icon-cog"></span>
-                                <span class="count">3</span>
-                            </div>
-                        </div>
-                        <div class="area-wrap">
-                            <div class="idle-area">
-                                <span class="type">Idle</span>
-                                <span class="icon-coffee"></span>
-                                <span class="count">5</span>
-                            </div>
-                        </div>
-                        <div class="area-wrap">
-                            <div class="badge-area">
-                                <ul class="badgeList">
-                                    <li class="badgeItem">
-                                        <div class="badgeName">ALL</div>
-                                        <div class="badgeCount">8</div>
-                                    </li>
-                                    <li class="badgeItem">
-                                        <div class="badgeName">PHYSICAL</div>
-                                        <div class="badgeCount">4</div>
-                                    </li>
-                                    <li class="badgeItem">
-                                        <div class="badgeName">VERTUAL</div>
-                                        <div class="badgeCount">4</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="agent-area">
-                        <div class="navbar">
-                            <ul class="nav">
-                                <li class="item"><a href="#">All</a></li>
-                                <li class="item"><a href="#">Physical</a></li>
-                                <li class="item"><a href="#">Virtual</a></li>
-                            </ul>
-                            <div class="search-area">
-                                <span class="icon-search"></span>
-                                <input type="text" name="">
-                            </div>
-                            <div class="menus">
-                                <span class="menu icon-th-card"></span>
-                                <span class="menu icon-th-list"></span>
-                            </div>
-                        </div>
-                        <div class="list-area">
-                            <ul class="list">
-                                <li class="item">
-                                    <div class="logo"></div>
-                                    <div class="detail">
-                                        <ul class="infolist">
-                                            <li><span class="icon-desktop"></span><span>bjstdmngbgr02.thoughtworks.com</span></li>
-                                            <li><span>building</span></li>
-                                            <li><span class="icon-info"></span><span>192.168.1.243</span></li>
-                                            <li><span class="icon-folder"></span><span>/dd/dd/dffff/dd</span></li>
-                                        </ul>
-                                        <ul class="platformlist">
-                                            <li class="add"><span class="icon-plus"></span></li>
-                                            <li><span>Firefox</span><span class="icon-trash"></span></li>
-                                            <li><span>Safari</span><span class="icon-trash"></span></li>
-                                            <li><span>Ubuntu</span><span class="icon-trash"></span></li>
-                                            <li><span>Chrome</span><span class="icon-trash"></span></li>
-                                        </ul>
-                                        <div class="deny"><span class="icon-deny"></span><span>Deny</span></div>
-                                    </div>
-                                    <div class="modal hidden">
-                                        
-                                        <div class="modal-header">
-                                        <p>Separate multiple resource name with commas</p>
-                                        <span class="close icon-close"></span>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input class="input-res" type="text" placeholder="Input value" />
-                                        </div>
-                                        <footer class="modal-footer">
-                                            <a class="button btn-add">Add Resources</a>
-                                            <a class="button btn-cancel">Cancel</a>
-                                        </footer>
-                                    </div>
-                                </li>
-                                <li class="item"></li>
-                                <li class="item"></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div id="mainContent" class="content">
+                    
                 </div>
             <footer class="footer">@copyright</footer>
         </div>
 </body>
-
+<script type="text/javascript" src="index.js"></script>
 </html>
