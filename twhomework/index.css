@@ -23,10 +23,10 @@ html,body{
 }
 a{
     text-decoration: none;
-  color: #2d4054;
+    color: #2d4054;
 }
 a:hover{
-  color: #00b4cf;
+  color: #2d4054;
 }
 ul:not(.history-list){
     list-style: none;
@@ -121,10 +121,14 @@ ul:not(.history-list){
 }
 
 @media screen and (min-width: 1200px) {
+    .header-content,
     .main {
         width: 1200px;
         margin: 0 auto;
     }
+}
+@media screen and (min-width: 1200px) and() {
+
 }
 
 @media screen and (min-width: 1024) and (max-width: 1200px) {}
@@ -188,9 +192,48 @@ header{
     text-align: center;
     background-color: #fff;
     box-shadow: 0 3px 3px #e1e4e6;
+    line-height: 0px;
+}
+header .header-content{
+  position: relative;
 }
 header .logo{
     display: inline-block;
+    vertical-align: middle;
+}
+
+header .menu{
+  display: inline-block;
+  position: absolute;
+  top:0;
+  right: 30px;
+}
+header .menu .bg{
+  display: inline-block;
+  height: 40px;
+  width: 28px;
+  background: url(ASSETS/menubg.PNG) center center no-repeat;
+  vertical-align: middle;
+}
+
+header .sub-menu{
+  position: absolute;
+  top:100%;
+  right: 0;
+  background-color: #fff;
+  z-index: 9;
+  white-space: nowrap;
+  border:1px solid #efefef;
+}
+header .sub-menu .menu-item{
+  margin:5px 0px;
+  padding: 3px 10px;
+}
+header .sub-menu .menu-item:hover{
+background-color: #efefef;
+}
+header .sub-menu .menu-name{
+margin-left: 5px;
 }
 .sideBar{
     position: absolute;
@@ -213,9 +256,12 @@ header .logo{
 {
   color: #f3f3f3;
 }
+.sideBar .nav .item:hover a, .sideBar .nav .item.active a{
+  color: #00b4cf;
+}
 .sideBar .nav .item:hover, .sideBar .nav .item.active{
     background-color: #435466;
-  color: #00b4cf;
+    color: #00b4cf;
 }
 .sideBar .nav .item a{
     padding-left: 10px;
