@@ -33,6 +33,21 @@ function removeEvent(node, type, listener) {
 };
 window['DOMLIB']['removeEvent'] = removeEvent;
 
+function preventDefault(eventObject) {
+    eventObject = eventObject || getEventObject(eventObject);
+    if (eventObject.preventDefault) {
+        eventObject.preventDefault();
+    } else {
+        eventObject.returnValue = false;
+    }
+}
+window['DOMLIB']['preventDefault']=preventDefault;
+
+function getEventObject(W3CEvent) {
+    return W3CEvent || window.event;
+}
+window['DOMLIB']['getEventObject'] = getEventObject;
+
 function getRequestObject(url, options) {
 
     // Initialize the request object
@@ -74,7 +89,7 @@ function getRequestObject(url, options) {
                 // Complete
                 // if aborted FF throws errors
                 try {
-                	console.log("status:"+status);
+                    console.log("status:" + status);
                     if ((req.status && req.status == 200) || (!req.status && req.responseText)) {
                         if (options.jsonResponseListener) {
                             try {
@@ -103,8 +118,8 @@ function getRequestObject(url, options) {
 
 
                 } catch (e) {
-                    
-                  console.log("exe error");
+
+                    console.log("exe error");
                 }
                 break;
         }
@@ -128,9 +143,9 @@ function ajaxRequest(url, options) {
 window['DOMLIB']['ajaxRequest'] = ajaxRequest;
 
 
-var template_header  = '';
-    template_navbar ='';
-template_header = template_header  + '<div class="header">' +
+var template_header = '';
+template_navbar = '';
+template_header = template_header + '<div class="header">' +
     '<div class="area-wrap">' +
     '<div class="building-area">' +
     '<span class="type">Building</span>' +
@@ -165,21 +180,21 @@ template_header = template_header  + '<div class="header">' +
     '</div>' +
     '</div>';
 
-    template_navbar = template_navbar +  '<div class="navbarWrapper"><div class="navbar">'
-        +'<ul class="nav">'
-           +' <li class="item "><a class="active" href="#">All</a></li>'
-            +'<li class="item"><a href="#">Physical</a></li>'
-            +'<li class="item"><a href="#">Virtual</a></li>'
-        +'</ul>'
-        +'<div class="search-area">'
-            +'<span class="icon-search"></span>'
-            +'<input type="text" name="">'
-        +'</div>'
-        +'<div class="menus">'
-            +'<span class="menu icon-th-card"></span>'
-            +'<span class="menu icon-th-list"></span>'
-        +'</div>'
-    +'</div></div>';
+template_navbar = template_navbar + '<div class="navbarWrapper"><div class="navbar">' +
+    '<ul class="nav">' +
+    ' <li class="item "><a class="active" href="#">All</a></li>' +
+    '<li class="item"><a href="#">Physical</a></li>' +
+    '<li class="item"><a href="#">Virtual</a></li>' +
+    '</ul>' +
+    '<div class="search-area">' +
+    '<span class="icon-search"></span>' +
+    '<input type="text" name="">' +
+    '</div>' +
+    '<div class="menus">' +
+    '<span class="menu icon-th-card"></span>' +
+    '<span class="menu icon-th-list"></span>' +
+    '</div>' +
+    '</div></div>';
 
 function Cruise() {
 
@@ -189,7 +204,6 @@ var cruise = (function() {
     return {
         container: container,
         init: function() {
-
             var nav = document.querySelector('.sideBar .nav');
             var agentMenu = nav.querySelector('li:nth-child(2)');
             agentMenu.focus();
@@ -208,6 +222,10 @@ var cruise = (function() {
                 case "agent":
                     url = './data/resources.json';
                     break;
+                default:
+                    this.container.innerHTML = "";
+                    return;
+
             }
             ajaxRequest(url, {
                 'method': 'get',
@@ -220,7 +238,7 @@ var cruise = (function() {
             //console.log(res);
         },
         renderAgentArea: function(data) {
-           // var res = data.res;
+            // var res = data.res;
             var html = '';
             //header
             template_header = template_header.replace('{{numOfBuilding}}', data.numOfBuilding);
@@ -228,37 +246,106 @@ var cruise = (function() {
             template_header = template_header.replace('{{total}}', data.total);
             template_header = template_header.replace('{{numOfPhysical}}', data.numOfPhysical);
             template_header = template_header.replace('{{numOfVertual}}', data.numOfVertual);
-            html = html + template_header + template_navbar + this.renderResList(data.res);
+            html = html + template_header + template_navbar + this.renderResList(data.resources);
             //navbar 
             this.container.innerHTML = html;
+
+            // Options for the observer (which mutations to observe)
+            /*            var config = { attributes: true, childList: true };
+                        console.log( this.container);
+
+                        // Callback function to execute when mutations are observed
+                        var callback = function(mutationsList) {
+                            for (var mutation of mutationsList) {
+                                if (mutation.type === 'childList') {
+                                	console.log("changed");
+                                    var eles = this.container.querySelectorAll(".mainContent .listWrapper .item .detail .platform .addPlatform");
+                                    if (eles && eles.length) {
+                                        for (var i = 0, len = eles.length; i < len; i++) {
+                                            DOMLIB['addEvent'](eles[i], 'click', cruise.addPlatform);
+                                        }
+                                    }
+                                } else if (mutation.type === 'attributes') {
+                                    console.log('The ' + mutation.attributeName + ' attribute was modified.');
+                                }
+                            }
+                        };
+
+                        // Create an observer instance linked to the callback function
+                        var observer = new MutationObserver(callback);
+
+                        // Start observing the target node for configured mutations
+                        observer.observe(this.container, config);
+
+                        // Later, you can stop observing
+                        //observer.disconnect();*/
+            console.log(this.container);
+            var eles = this.container.querySelectorAll("#mainContent .listWrapper .item .detail .platform .addPlat");
+            console.log(eles);
+            if (eles && eles.length) {
+                for (var i = 0, len = eles.length; i < len; i++) {
+                	 DOMLIB['addEvent'](eles[i], 'click', cruise.addPlatform);
+                	console.log("----------------");
+                   
+                }
+            }
+
         },
-        renderResList: function(res){
-        	var html = ' <div class="listWrapper"><ul class="list">';
-        	for(var i=0, len = res.length; i<len; i++){
-        		html = html+ '<li class="item">'
-                +'<div class="logo"></div>'
-                +'<div class="detail">'
-                    +'<ul class="infolist">'
-                        +'<li><span class="icon-desktop"></span><span>bjstdmngbgr02.thoughtworks.com</span></li>'
-                        +'<li><span>building</span></li>'
-                        +'<li><span class="icon-info"></span><span>192.168.1.243</span></li>'
-                        +'<li><span class="icon-folder"></span><span>/dd/dd/dffff/dd</span></li>'
-                    +'</ul>'
-                    +'<ul class="platformlist">'
-                        +'<li class="add"><span class="icon-plus"></span></li>'
-                        +'<li><span>Firefox</span><span class="icon-trash"></span></li>'
-                        +'<li><span>Safari</span><span class="icon-trash"></span></li>'
-                        +'<li><span>Ubuntu</span><span class="icon-trash"></span></li>'
-                        +'<li><span>Chrome</span><span class="icon-trash"></span></li>'
-                    +'</ul>'
-                    +'<div class="deny"><span class="icon-deny"></span><span>Deny</span></div>'
-                +'</div></li>'
-        	}
-        	html = html + "</ul></div>"
-        	return html;
+        addPlatform: function(event) {
+            var event = event || window.event;
+            DOMLIB['preventDefault'](event);
+            console.log("id" + this.id);
 
+        },
+        submitAdd: function() {
+
+        },
+        deletePlatform: function() {
+
+        },
+        renderResList: function(resources) {
+            var html = ' <div class="listWrapper"><ul class="list">';
+            var list = "";
+            for (var i = 0, len = resources.length; i < len; i++) {
+                var res = resources[i];
+                list = list + '<li class="item" >' +
+                    '<div class="logo"><img src="' + res.logo + '"></div>' +
+                    '<div class="detail">' +
+                    '<ul class="infolist">' +
+                    '<li><span class="icon-desktop"></span><span>' + res.domain + '</span></li>' +
+                    '<li><span>' + res.status + '</span></li>' +
+                    '<li><span class="icon-info"></span><span>' + res.ip + '</span></li>' +
+                    '<li><span class="icon-folder"></span><span>' + res.path + '</span></li>' +
+                    '</ul>';
+                list = list + '<div class="platform"><a class=" addPlat icon-plus" href="" id="' + i + '"></a>';
+                var plats = res.platforms;
+                if (plats && plats.length) {
+                    list = list + '<div class="platformWrapper"><ul class="platformlist">';
+                    var platStr = '';
+                    for (var j = 0; j < plats.length; j++) {
+                        platStr = platStr + '<li><span>' + plats[j] + '</span><span class="icon-trash"></span></li>'
+                    }
+                    list = list + platStr + '</ul></div></div>';
+                }
+                list = list + '<div class="deny"><span class="icon-deny"></span><span>Deny</span></div></div>';
+                list = list + '<div class="modal hidden">' +
+                    '<div class="modal-header">' +
+                    '<p>Separate multiple resource name with commas</p>'
+                '<span class="close icon-close"></span>'
+                ' </div>'
+                '<div class="modal-body">'
+                '<input class="input-res" type="text" placeholder="Input value" />'
+                '</div>'
+                '<footer class="modal-footer">'
+                '<a class="button btn-add">Add Resources</a>'
+                '<a class="button btn-cancel">Cancel</a>'
+                ' </footer>'
+                ' </div>';
+            }
+
+            html = html + list + '</ul></div>';
+            return html;
         }
-
     }
 })();
 
