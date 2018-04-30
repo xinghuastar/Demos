@@ -9,7 +9,8 @@ html{
      font-size: 14px;
 }
 html,body{
-   /* height: 100%;*/
+    height: 100%;
+    background-color: #f3f3f3;
 }
 *,
 ::before,
@@ -127,11 +128,14 @@ ul:not(.history-list){
         margin: 0 auto;
     }
 }
-@media screen and (min-width: 1200px) and() {
+@media screen and (min-width: 1024px) and(max-width: 1200px) {
+  .mian{
+    margin: 0 10px;
+  }
 
 }
 
-@media screen and (min-width: 1024) and (max-width: 1200px) {}
+
 
 @media all and (min-width: 1200px) {
     .flex.lg1 {
@@ -178,13 +182,15 @@ ul:not(.history-list){
         flex-basis: 100%;
     }
 }
-.container{
+/*.container{
     background-color: #f3f3f3;
     min-height: 100vh;
-}
+
+}*/
 .main{
   padding-bottom: 50px;
   position: relative;
+  min-height: calc(100% - 50px);
 }
 header{
     height: 50px;
@@ -434,7 +440,9 @@ border-right: 1px solid #f3f3f3;
 .listWrapper .list .item .logo{
   flex: 0 0 80px;
   height: 80px;
-  background: url('ASSETS/os icons/windows.png') center no-repeat;
+}
+.listWrapper .list .item .logo img{
+  vertical-align: middle;
 }
 .listWrapper .list  .item .detail{
   flex: 1 1 auto;
@@ -464,28 +472,30 @@ border-right: 1px solid #f3f3f3;
 .listWrapper .list  .item .infolist li:nth-child(3){
   flex: 0 0 130px;
 }
+
+.listWrapper .list .item .platform{
+  margin-top: 25px;
+}
+.listWrapper .list .item .platformWrapper{
+  display: inline-block;
+}
 .listWrapper .list .item .platformlist{
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
   padding-right: 70px;
 }
-.listWrapper .list  .item .platformlist li.add {
+.listWrapper .list  .item .addPlat {
     background-color: #00b4cf;
     margin-right: 5px;
-    padding:2px 5px;
-}
-.listWrapper .list  .item .platformlist li.add span{
     font-size: 18px;
+    padding:2px 5px;
     color: #fff;
-    vertical-align: -5px;   
 }
-.listWrapper .list  .item .platformlist li:not(:first-child){
-    margin-right: 5px;
-    padding:3px 5px;
-    background-color: #efefef;
+.listWrapper .list  .item .platformlist li{
+  margin-left: 5px;
+  background-color: #efefef;
 }
-.listWrapper .list  .item .platformlist li:not(:first-child) span:nth-child(2){
+.listWrapper .list  .item .platformlist li span:nth-child(2){
     margin-left: 5px;
     font-size: 16px;
 }
