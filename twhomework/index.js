@@ -33,6 +33,20 @@ function removeEvent(node, type, listener) {
 };
 window['DOMLIB']['removeEvent'] = removeEvent;
 
+function delegate(delegateNode, type, listener) {
+    DOMLIB['addEvent'](document, type, function(event) {
+    	event = event || window.event;
+        for (var target = event.target; target && target != this; target = target.parentNode) {
+            // loop parent nodes from the target to the delegation node
+            if (target.matches( delegateNode)) {
+                listener.call(target, event);
+                break;
+            }
+        }
+        event.stopPropagation();
+    });
+}
+window['DOMLIB']['delegate'] = delegate;
 function preventDefault(eventObject) {
     eventObject = eventObject || getEventObject(eventObject);
     if (eventObject.preventDefault) {
@@ -42,12 +56,41 @@ function preventDefault(eventObject) {
     }
 }
 window['DOMLIB']['preventDefault']=preventDefault;
-
+function stopPropagation(eventObject){
+     eventObject = eventObject || getEventObject(eventObject);
+     if(eventObject.bubbles){
+     	eventObject.stopPropagation();
+     }else{
+     	eventObject.cancelBubble = true;
+     }
+}
 function getEventObject(W3CEvent) {
     return W3CEvent || window.event;
 }
 window['DOMLIB']['getEventObject'] = getEventObject;
 
+function addClass(node,className){
+	if(!node) return false;
+	if(node.className){
+		if(node.className.indexOf(className)<=-1){
+			node.className = ' '+className;
+		}
+	}else{
+		node.className = className;
+	}
+	return true;
+}
+
+window['DOMLIB']['addClass'] = addClass;
+function removeClass(node,className){
+	if(!node) return false;
+	if(node.className){
+		node.className = node.className.indexOf(className)>-1?node.className.replace(className,""):"";
+	}
+	return true;
+
+}
+window['DOMLIB']['removeClass'] = removeClass;
 function getRequestObject(url, options) {
 
     // Initialize the request object
@@ -201,8 +244,15 @@ function Cruise() {
 }
 var cruise = (function() {
     var container = document.getElementById("mainContent");
+    var resList;
     return {
         container: container,
+        getResList: function(){
+        	return resList;
+        },
+        setResList: function(list){
+        	resList = list;
+        },
         init: function() {
             var nav = document.querySelector('.sideBar .nav');
             var agentMenu = nav.querySelector('li:nth-child(2)');
@@ -215,7 +265,6 @@ var cruise = (function() {
             });
         },
         render: function(type) {
-
             var url = "";
             //get data
             switch (type) {
@@ -232,6 +281,7 @@ var cruise = (function() {
                 'send': null,
                 'jsonResponseListener': function(json) {
                     console.log(json);
+                    cruise.setResList(json.resources);
                     cruise.renderAgentArea(json);
                 }
             });
@@ -280,35 +330,76 @@ var cruise = (function() {
                         // Later, you can stop observing
                         //observer.disconnect();*/
             console.log(this.container);
-            var eles = this.container.querySelectorAll("#mainContent .listWrapper .item .detail .platform .addPlat");
+            var eles = this.container.querySelectorAll("#mainContent .listWrapper .list .item");
             console.log(eles);
-            if (eles && eles.length) {
+/*            if (eles && eles.length) {
                 for (var i = 0, len = eles.length; i < len; i++) {
-                	 DOMLIB['addEvent'](eles[i], 'click', cruise.addPlatform);
-                	console.log("----------------");
-                   
+                	 DOMLIB['delegate'](eles[i], 'click', cruise.dispatchHandler);
                 }
-            }
+            }*/
+            DOMLIB['delegate']("#mainContent .listWrapper .list .item", 'click', cruise.dispatchHandler);
 
         },
-        addPlatform: function(event) {
-            var event = event || window.event;
-            DOMLIB['preventDefault'](event);
-            console.log("id" + this.id);
+        dispatchHandler: function(event){
+        	event = event || window.event;
+        	 DOMLIB['preventDefault'](event);
+        	// event.target.getAttribute("data-js");
+        	 switch(event.target.getAttribute("data-js")){
+        	 	case "addRes":
+        	 	    cruise.addPlatform(this);
+        	 	    break;
+        	 	case "subRes":
+        	 	    cruise.submitAdd(this);
+        	 	    break;
+        	 	case "delPlat":
+        	 	   cruise.deletePlatform(this,event);
+        	 	   break;
+        	 }
+
 
         },
-        submitAdd: function() {
+        addPlatform: function(currItem) {
+            //show conrresponding dialog
+            DOMLIB['removeClass'](cruise.container.querySelector('#dialog'+currItem.id),"hidden");
+            console.log(currItem.id);
+              
+        },
+        submitAdd: function(currItem) {
+        	var id = currItem.id;
+        	var inputEle = currItem.querySelector(".input-res");
+        	var value = currItem.querySelector(".input-res").value;
+        	if(!value) return false;
+        	var plats = value.split(',');
+        	if(plats && plats.length){
+        		var platformlistEle = currItem.querySelector(".platformlist");
+        		var html = '';
+        		for(var i=0,len=plats.length;i<len;i++){
+        			this.getResList()[id].platforms.push(plats[i]);
+        			html = html + '<li><span>' + plats[i] + '</span><span class="icon-trash"></span></li>'
+        		} 
+        		//reset the input value
+        	inputEle.value="";
+        	//refresh view
+        	 platformlistEle.innerHTML = platformlistEle.innerHTML + html;
+        	 // hidden modal
+        	 currItem.querySelector(".modal").classList.add("hidden");
+        	}
+        	
 
         },
-        deletePlatform: function() {
-
+        deletePlatform: function(currItem,event) {
+        	var arr = this.getResList()[currItem.id].platforms;
+        	arr.splice(arr.indexOf(event.target.previousSibling.textContent || event.target.previousSibling.textContent.innerText),1);
+        	// refresh view
+        	event.target.parentElement.parentElement.removeChild(event.target.parentElement);
+        	console.log(event.target.previousSibling);
         },
         renderResList: function(resources) {
             var html = ' <div class="listWrapper"><ul class="list">';
             var list = "";
             for (var i = 0, len = resources.length; i < len; i++) {
                 var res = resources[i];
-                list = list + '<li class="item" >' +
+                list = list + '<li class="item" id="'+i+'">' +
                     '<div class="logo"><img src="' + res.logo + '"></div>' +
                     '<div class="detail">' +
                     '<ul class="infolist">' +
@@ -317,29 +408,29 @@ var cruise = (function() {
                     '<li><span class="icon-info"></span><span>' + res.ip + '</span></li>' +
                     '<li><span class="icon-folder"></span><span>' + res.path + '</span></li>' +
                     '</ul>';
-                list = list + '<div class="platform"><a class=" addPlat icon-plus" href="" id="' + i + '"></a>';
+                list = list + '<div class="platform"><a class=" addPlat icon-plus js-addRes" data-js="addRes" href="" id="' + i + '"></a>';
                 var plats = res.platforms;
                 if (plats && plats.length) {
                     list = list + '<div class="platformWrapper"><ul class="platformlist">';
                     var platStr = '';
                     for (var j = 0; j < plats.length; j++) {
-                        platStr = platStr + '<li><span>' + plats[j] + '</span><span class="icon-trash"></span></li>'
+                        platStr = platStr + '<li><span>' + plats[j] + '</span><span class="icon-trash" data-js="delPlat"></span></li>'
                     }
                     list = list + platStr + '</ul></div></div>';
                 }
                 list = list + '<div class="deny"><span class="icon-deny"></span><span>Deny</span></div></div>';
-                list = list + '<div class="modal hidden">' +
+                list = list + '<div class="modal hidden" id="dialog'+i+'">' +
                     '<div class="modal-header">' +
-                    '<p>Separate multiple resource name with commas</p>'
-                '<span class="close icon-close"></span>'
-                ' </div>'
-                '<div class="modal-body">'
-                '<input class="input-res" type="text" placeholder="Input value" />'
-                '</div>'
-                '<footer class="modal-footer">'
-                '<a class="button btn-add">Add Resources</a>'
-                '<a class="button btn-cancel">Cancel</a>'
-                ' </footer>'
+                    '<p>Separate multiple resource name with commas</p>'+
+                '<span class="close icon-close"></span>'+
+                ' </div>'+
+                '<div class="modal-body">'+
+                '<input class="input-res" type="text" placeholder="Input value" />'+
+                '</div>'+
+                '<footer class="modal-footer">'+
+                '<a class="button btn-add js-subRes" data-js="subRes">Add Resources</a>'+
+                '<a class="button btn-cancel js-cancel" data-js="cancel">Cancel</a>'+
+                ' </footer>'+
                 ' </div>';
             }
 
