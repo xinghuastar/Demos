@@ -1,16 +1,23 @@
-[{
+{"total":"8",
+"numOfPhysical":"4",
+"numOfVertual":"4",
+"numOfBuilding":"3",
+"numOfIdle":"5",
+"resources":[{
 	"logo":"ASSETS/os icons/windows.png",
 	"domain":"bjstdmngbgr01.thoughtworks.com",
 	"status":"idle",
 	"ip":"192.168.1.243",
 	"path":"/var/lib/cruise-agent",
+	"type": "physical",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	},
 	{
 	"logo":"ASSETS/os icons/windows.png",
 	"domain":"bjstdmngbgr02.thoughtworks.com",
 	"status":"building",
-	"ip":"192.168.1.243",
+	"ip":"192.168.1.244",
+	"type": "physical",
 	"path":"/var/lib/cruise-agent",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	},
@@ -18,7 +25,8 @@
 	"logo":"ASSETS/os icons/ubuntu.png",
 	"domain":"bjstdmngbgr03.thoughtworks.com",
 	"status":"building",
-	"ip":"192.168.1.243",
+	"ip":"192.168.1.245",
+	"type": "physical",
 	"path":"/var/lib/cruise-agent",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	},
@@ -26,7 +34,8 @@
 	"logo":"ASSETS/os icons/debin.png",
 	"domain":"bjstdmngbgr04.thoughtworks.com",
 	"status":"building",
-	"ip":"192.168.1.243",
+	"ip":"192.168.1.246",
+	"type": "physical",
 	"path":"/var/lib/cruise-agent",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	},
@@ -34,7 +43,8 @@
 	"logo":"ASSETS/os icons/suse.png",
 	"domain":"bjstdmngbgr05.thoughtworks.com",
 	"status":"idle",
-	"ip":"192.168.1.243",
+	"ip":"192.168.1.247",
+	"type": "virtual",
 	"path":"/var/lib/cruise-agent",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	},
@@ -43,6 +53,53 @@
 	"domain":"bjstdmngbgr06.thoughtworks.com",
 	"status":"idle",
 	"ip":"192.168.1.243",
+	"type": "virtual",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/debin.png",
+	"domain":"bjstdmngbgr04.thoughtworks.com",
+	"status":"building",
+	"ip":"192.168.1.243",
+	"type": "physical",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/suse.png",
+	"domain":"bjstdmngbgr05.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"type": "virtual",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/debin.png",
+	"domain":"bjstdmngbgr04.thoughtworks.com",
+	"status":"building",
+	"ip":"192.168.1.243",
+	"type": "physical",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/suse.png",
+	"domain":"bjstdmngbgr05.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"type": "virtual",
+	"path":"/var/lib/cruise-agent",
+	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
+	},
+	{
+	"logo":"ASSETS/os icons/cent_os.png",
+	"domain":"bjstdmngbgr06.thoughtworks.com",
+	"status":"idle",
+	"ip":"192.168.1.243",
+	"type": "virtual",
 	"path":"/var/lib/cruise-agent",
 	"platforms":["Firefox","Safari","Ubuntu","Chrome"]
 	}]
+}
